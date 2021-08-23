@@ -5,15 +5,16 @@ class Round {
     this.currentDeck = deck
     this.currentCard = this.currentDeck.deck[0]
     this.turns = 0;
+    this.incorrectGuesses = []
   }
 
   returnCurrentCard() {
     return this.currentCard
   }
 
-  takeTurn(guess, card) {
+  takeTurn(guess) {
     //instantiates new turn
-    let newTurn = new Turn(guess, card)
+    let newTurn = new Turn(guess, this.currentCard)
 
     //update turn count
     this.turns++
@@ -21,10 +22,20 @@ class Round {
     //removes first card from deck
     this.currentDeck.deck.shift()
 
-    //next card becomes current card
-    this.currentCard
 
+    //next card becomes current card
+    this.currentCard = this.currentDeck.deck[0]
+
+    //guess is evaluated
+    let gameGuess = newTurn.evaluateGuess();
+
+    if(gameGuess === false){
+      this.incorrectGuesses.push(this.currentCard.cardNumber)
+    } else {
+      return true
+    }
     
+  
   
   }
 
