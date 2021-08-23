@@ -121,10 +121,22 @@ describe('Round', () => {
     const turn = new Turn('gallbladder', card2)
     const round = new Round(deck)
 
-    console.log(card2)
     round.takeTurn('gallbladder')
 
     expect(round.takeTurn('gallbladder')).to.equal('Sheeeesh! You are correct!')
+  })
+
+  it('should return Sorry you are wrong! when the answer is incorrect', () => {
+    const card1 = new Card (1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
+    const card2 = new Card (2, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
+    const card3 = new Card(3, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const deck = new Deck([card1, card2, card3])
+    const turn = new Turn('potato', card2)
+    const round = new Round(deck)
+
+    round.takeTurn('potato')
+
+    expect(round.takeTurn('potato')).to.equal('Sorry you are wrong!')
   })
 
 
