@@ -22,20 +22,18 @@ class Round {
     //removes first card from deck
     this.currentDeck.deck.shift()
 
-
     //next card becomes current card
     this.currentCard = this.currentDeck.deck[0]
 
     //guess is evaluated
     let gameGuess = newTurn.evaluateGuess();
-
+  
     if(gameGuess === false){
       this.incorrectGuesses.push(this.currentCard.cardNumber)
-    } else {
-      return true
-    }
-    
+    } 
   
+    //returns feedback
+    return newTurn.giveFeedback()
   
   }
 
