@@ -13,32 +13,20 @@ class Round {
   }
 
   takeTurn(guess) {
-    //instantiates new turn
     let newTurn = new Turn(guess, this.currentCard)
 
-    //update turn count ` 
-    this.turns++
-
-    //guess is evaluated
-    if(newTurn.evaluateGuess() === false){
+    if(newTurn.evaluateGuess() === true){
       this.incorrectGuesses.push(this.currentCard.cardNumber)
     }
 
-    //removes first card from deck
-    this.currentDeck.deck.shift()
-
-    //next card becomes current card
-    this.currentCard = this.currentDeck.deck[0]
-
-    //returns feedback
+    this.turns++
+    this.currentCard = this.currentDeck.deck[this.turns]
     return newTurn.giveFeedback()
-  
-
   }
 
   calculatePercentCorrect() {
     let totalCorrect = this.currentDeck.deck.length - this.incorrectGuesses.length
-    return totalCorrect / this.currentDeck.deck.length * 100
+    return Math.round(totalCorrect / this.currentDeck.deck.length * 100)
   }
 
   endRound() {

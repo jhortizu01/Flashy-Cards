@@ -43,7 +43,7 @@ describe('Game', () => {
   //   expect(game).to.be.an.instanceof(Game)
   // })
 
-  it.skip('should create cards out of data', () => {
+  it('should create cards out of data', () => {
     const game = new Game()
     game.start()
     expect(game.cards[0]).to.be.an.instanceof(Card);
