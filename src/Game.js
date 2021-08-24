@@ -10,26 +10,36 @@ class Game {
     this.data = prototypeQuestions;
     this.cards = [];
     this.deck = {};
-    this.round = {}
+    this.currentRound = {};
+    this.timeStart = 0
   }
 
   start() {
+
     this.cards = this.data.map(cardInfo => {
       return new Card(cardInfo.id, cardInfo.question, cardInfo.answers, cardInfo.correctAnswer)
     })
 
     this.deck = new Deck(this.cards)
-    this.round = new Round(this.deck)
-    this.printMessage(this.deck, this.round)
-    this.printQuestion(this.round)
 
-    console.log(Date.now())
+    this.currentRound = new Round(this.deck)
+
+    this.printMessage(this.deck, this.currentRound)
+    this.printQuestion(this.currentRound)
+
+
+
+    this.currentRound.startTime.push(this.startTimer())
+
+
+
   }
 
   startTimer() {
-    let startTime = Date.now()
+    this.timeStart = Date.now()
   }
-  printMessage(deck, round) {
+
+  printMessage(deck) {
       console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
   }
@@ -38,5 +48,6 @@ class Game {
       util.main(round);
   }
 }
+1
 
 module.exports = Game;

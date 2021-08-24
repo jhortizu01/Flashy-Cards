@@ -1,4 +1,5 @@
 const Turn = require("./Turn");
+const Game = require("./Game");
 
 class Round {
   constructor(deck) {
@@ -6,6 +7,8 @@ class Round {
     this.currentCard = this.currentDeck.deck[0]
     this.turns = 0;
     this.incorrectGuesses = []
+    this.startTime = []
+    this.timeEnd = 0
   }
 
   returnCurrentCard() {
@@ -14,13 +17,10 @@ class Round {
 
   takeTurn(guess) {
     let newTurn = new Turn(guess, this.currentCard)
-    console.log(this.currentCard)
-    console.log(guess)
 
     if(newTurn.evaluateGuess() === false){
       this.incorrectGuesses.push(this.currentCard.id)
     }
-    console.log(this.incorrectGuesses)
 
     this.turns++
     this.currentCard = this.currentDeck.deck[this.turns]
@@ -34,6 +34,21 @@ class Round {
 
   endRound() {
     console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`)
+    
+    this.timeEnd = Date.now();
+
+    console.log(this.startTime)
+    let durationOfGame = (this.timeEnd -= this.startTime)
+    
+    
+    this.convertTime(durationOfGame)
+    
+  }
+
+  convertTime(time) {
+      var minutes = Math.floor(time / 60000);
+      var seconds = ((time % 60000) / 1000).toFixed(0);
+      console.log(`You've spent ${minutes}:${(seconds < 10 ? '0' : '')} ${seconds} on this round`);
   }
 
 
