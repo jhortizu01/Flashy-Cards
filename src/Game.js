@@ -28,15 +28,11 @@ class Game {
     this.printQuestion(this.currentRound)
 
 
-
-    this.currentRound.startTime.push(this.startTimer())
-
-
-
+   this.currentRound.startTime = this.startTimer()
   }
 
   startTimer() {
-    this.timeStart = Date.now()
+    return this.timeStart = Date.now()
   }
 
   printMessage(deck) {

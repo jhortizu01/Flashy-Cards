@@ -34,13 +34,8 @@ class Round {
 
   endRound() {
     console.log(`** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`)
-    
     this.timeEnd = Date.now();
-
-    console.log(this.startTime)
     let durationOfGame = (this.timeEnd -= this.startTime)
-    
-    
     this.convertTime(durationOfGame)
     
   }
@@ -48,7 +43,7 @@ class Round {
   convertTime(time) {
       var minutes = Math.floor(time / 60000);
       var seconds = ((time % 60000) / 1000).toFixed(0);
-      console.log(`You've spent ${minutes}:${(seconds < 10 ? '0' : '')} ${seconds} on this round`);
+      console.log(`You've spent ${minutes} minutes and ${(seconds < 10 ? '0' : '')} ${seconds} seconds on this round`);
   }
 
 
