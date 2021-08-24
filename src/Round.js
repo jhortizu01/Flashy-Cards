@@ -14,10 +14,13 @@ class Round {
 
   takeTurn(guess) {
     let newTurn = new Turn(guess, this.currentCard)
+    console.log(this.currentCard)
+    console.log(guess)
 
-    if(newTurn.evaluateGuess() === true){
-      this.incorrectGuesses.push(this.currentCard.cardNumber)
+    if(newTurn.evaluateGuess() === false){
+      this.incorrectGuesses.push(this.currentCard.id)
     }
+    console.log(this.incorrectGuesses)
 
     this.turns++
     this.currentCard = this.currentDeck.deck[this.turns]

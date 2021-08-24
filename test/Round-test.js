@@ -83,7 +83,6 @@ describe('Round', () => {
     const card2 = new Card (2, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
     const card3 = new Card(3, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
     const deck = new Deck([card1, card2, card3])
-    //const turn = new Turn('pug', card1)
     const round = new Round(deck)
 
     round.takeTurn('pug')
@@ -125,7 +124,7 @@ describe('Round', () => {
     expect(round.calculatePercentCorrect()).to.equal(33)
   })
 
-  it('should print  ** Round over! ** You answered 33% of the questions correctly! to the console', () => {
+  it.skip('should print  ** Round over! ** You answered 33% of the questions correctly! to the console', () => {
     const card1 = new Card (1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
     const card2 = new Card (2, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
     const card3 = new Card(3, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');

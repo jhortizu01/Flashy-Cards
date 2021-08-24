@@ -17,17 +17,17 @@ class Game {
     this.cards = this.data.map(cardInfo => {
       return new Card(cardInfo.id, cardInfo.question, cardInfo.answers, cardInfo.correctAnswer)
     })
-    console.log(this.cards)
+
     this.deck = new Deck(this.cards)
     this.round = new Round(this.deck)
     this.printMessage(this.deck, this.round)
     this.printQuestion(this.round)
 
-    this.startTimer()
+    console.log(Date.now())
   }
 
   startTimer() {
-    startTime = Date.now()
+    let startTime = Date.now()
   }
   printMessage(deck, round) {
       console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
