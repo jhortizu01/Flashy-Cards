@@ -1,7 +1,7 @@
 const chai = require('chai');
-const Card = require('../src/Card');
 const expect = chai.expect;
 
+const Card = require('../src/Card');
 const Turn = require('../src/Turn')
 
 describe('Turn', () => {
@@ -40,10 +40,16 @@ describe('Turn', () => {
     expect(turn.returnCard()).to.equal(card)
   })
 
-  it('should return a boolean indicating if the users guess matches the correct answer', () => {
+  it('should return a false if the guess does not match the correct answer', () => {
     const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object')
     const turn = new Turn('dog', card)
     expect(turn.evaluateGuess()).to.equal(false)
+  })
+
+  it('should return a true if the guess does not match the correct answer', () => {
+    const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object')
+    const turn = new Turn('object', card)
+    expect(turn.evaluateGuess()).to.equal(true)
   })
 
   it('should return false when there is no guess', () => {
@@ -55,13 +61,13 @@ describe('Turn', () => {
   it('should return incorrect feedback', () => {
     const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object')
     const turn = new Turn('dog', card)
-    expect(turn.giveFeedback()).to.equal('Sorry you are wrong!')
+    expect(turn.giveFeedback()).to.equal('Incorrect!')
   })
 
   it('should return correct feedback', () => {
     const card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object')
     const turn = new Turn('object', card)
-    expect(turn.giveFeedback()).to.equal('Sheeeesh! You are correct!')
+    expect(turn.giveFeedback()).to.equal('Correct!')
   })
 
 })

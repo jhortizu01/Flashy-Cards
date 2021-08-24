@@ -41,6 +41,7 @@ describe('Round', () => {
     const card3 = new Card(3, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
     const deck = new Deck([card1, card2, card3])
     const round = new Round(deck)
+
     expect(round.returnCurrentCard()).to.equal(deck.deck[0])
   })
 
@@ -51,16 +52,6 @@ describe('Round', () => {
     const deck = new Deck([card1, card2, card3])
     const round = new Round(deck)
     expect(round.turns).to.equal(0)
-  })
-
-  it.skip('should create a new instance of Turn', () => {
-    const card1 = new Card (1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card (2, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(3, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
-    const deck = new Deck([card1, card2, card3])
-    const turn = new Turn('dog', card1)
-    const round = new Round(deck)
-    expect(round.takeTurn('dog', card1)).to.be.an.instanceof(Turn)
   })
   
   it('should update current turn count', () => {
@@ -84,7 +75,7 @@ describe('Round', () => {
 
     round.takeTurn()
 
-    expect(round.currentCard).to.equal(deck.deck[0])
+    expect(round.currentCard).to.equal(card2)
   })
 
   it('should store incorrect guesses', () => {
@@ -92,28 +83,15 @@ describe('Round', () => {
     const card2 = new Card (2, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
     const card3 = new Card(3, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
     const deck = new Deck([card1, card2, card3])
-    const turn = new Turn('dog', deck[0])
+    const turn = new Turn('pug', card1)
     const round = new Round(deck)
 
     round.takeTurn()
 
-    expect(round.incorrectGuesses).to.deep.equal([2])
-  })
-
-  it('should store incorrect guesses', () => {
-    const card1 = new Card (1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
-    const card2 = new Card (2, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
-    const card3 = new Card(3, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
-    const deck = new Deck([card1, card2, card3])
-    const turn = new Turn('dog', deck[0])
-    const round = new Round(deck)
-
-    round.takeTurn()
-
-    expect(round.incorrectGuesses).to.deep.equal([2])
+    expect(round.incorrectGuesses).to.deep.equal([1])
   })
   
-  it('should return Sheeeesh! You are correct! when the answer is correct', () => {
+  it('should return Correct! when the answer is correct', () => {
     const card1 = new Card (1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
     const card2 = new Card (2, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
     const card3 = new Card(3, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
@@ -121,22 +99,50 @@ describe('Round', () => {
     const turn = new Turn('gallbladder', card2)
     const round = new Round(deck)
 
-    round.takeTurn('gallbladder')
-
-    expect(round.takeTurn('gallbladder')).to.equal('Sheeeesh! You are correct!')
+    round.takeTurn()
+    
+    expect(round.takeTurn('gallbladder')).to.equal('Correct!')
   })
 
-  it('should return Sorry you are wrong! when the answer is incorrect', () => {
+  it('should return Incorrect! when the answer is incorrect', () => {
     const card1 = new Card (1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
     const card2 = new Card (2, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
     const card3 = new Card(3, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
     const deck = new Deck([card1, card2, card3])
-    const turn = new Turn('potato', card2)
+    const turn = new Turn('Fitzgerald', card2)
     const round = new Round(deck)
 
-    round.takeTurn('potato')
+    round.takeTurn('Fitzgerald')
+  
+    expect(round.takeTurn('Fitzgerald')).to.equal('Incorrect!')
+  })
 
-    expect(round.takeTurn('potato')).to.equal('Sorry you are wrong!')
+  it('should calculate percent of questions that were guessed correctly', () => {
+    const card1 = new Card (1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
+    const card2 = new Card (2, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
+    const card3 = new Card(3, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const deck = new Deck([card1, card2, card3])
+    const turn = new Turn('gallbladder', card1)
+    const round = new Round(deck)
+
+    round.takeTurn('gallbladder')
+    round.calculatePercentCorrect() 
+
+    expect(round.calculatePercentCorrect()).to.equal(50)
+  })
+
+  it.skip('should print  ** Round over! ** You answered 50% of the questions correctly! to the console', () => {
+    const card1 = new Card (1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
+    const card2 = new Card (2, 'What organ is Khalid missing?', ['spleen', 'appendix', 'gallbladder'], 'gallbladder');
+    const card3 = new Card(3, 'What is Travis\'s middle name?', ['Lex', 'William', 'Fitzgerald'], 'Fitzgerald');
+    const deck = new Deck([card1, card2, card3])
+    const turn = new Turn('Fitzgerald', card2)
+    const round = new Round(deck)
+
+    round.takeTurn('gallbladder')
+    round.calculatePercentCorrect('Fitzgerald') 
+
+    expect(round.endRound()).to.equal('** Round over! ** You answered 50% of the questions correctly!')
   })
 
 

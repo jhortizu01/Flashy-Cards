@@ -22,9 +22,9 @@ class Turn {
 
   giveFeedback() {
       if(this.evaluateGuess() === true) {
-          return 'Sheeeesh! You are correct!'
+          return 'Correct!'
       } else {
-          return 'Sorry you are wrong!'
+          return 'Incorrect!'
       }
   }
 
