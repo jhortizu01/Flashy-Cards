@@ -86,6 +86,7 @@ describe('Round', () => {
     const round = new Round(deck)
 
     round.takeTurn('pug')
+
     expect(round.incorrectGuesses).to.deep.equal([1])
   })
   

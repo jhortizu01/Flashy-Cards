@@ -7,16 +7,15 @@ const util = require('./util');
 
 class Game {
   constructor() {
-    this.data = prototypeQuestions;
     this.cards = [];
     this.deck = {};
-    this.currentRound = {};
+    this.currentRound = null;
     this.timeStart = 0
   }
 
   start() {
 
-    this.cards = this.data.map(cardInfo => {
+    this.cards = prototypeQuestions.map(cardInfo => {
       return new Card(cardInfo.id, cardInfo.question, cardInfo.answers, cardInfo.correctAnswer)
     })
 
@@ -26,7 +25,6 @@ class Game {
 
     this.printMessage(this.deck, this.currentRound)
     this.printQuestion(this.currentRound)
-
 
    this.currentRound.startTime = this.startTimer()
   }
@@ -44,6 +42,5 @@ class Game {
       util.main(round);
   }
 }
-1
 
 module.exports = Game;

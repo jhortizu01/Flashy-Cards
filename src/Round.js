@@ -7,7 +7,7 @@ class Round {
     this.currentCard = this.currentDeck.deck[0]
     this.turns = 0;
     this.incorrectGuesses = []
-    this.startTime = []
+    this.startTime = 0
     this.timeEnd = 0
   }
 
