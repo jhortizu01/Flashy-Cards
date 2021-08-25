@@ -4,6 +4,7 @@ class Deck {
   }
 
   countCards() {
+    console.log(this.deck)
     return this.deck.length
   }
 }
