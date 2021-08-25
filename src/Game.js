@@ -14,19 +14,18 @@ class Game {
   }
 
   start() {
+    this.instantiateClasses()
+    this.printMessage(this.deck, this.currentRound)
+    this.printQuestion(this.currentRound)
+    this.currentRound.startTime = this.startTimer()
+  }
 
+  instantiateClasses() {
     this.cards = prototypeQuestions.map(cardInfo => {
       return new Card(cardInfo.id, cardInfo.question, cardInfo.answers, cardInfo.correctAnswer)
     })
-
     this.deck = new Deck(this.cards)
-
     this.currentRound = new Round(this.deck)
-
-    this.printMessage(this.deck, this.currentRound)
-    this.printQuestion(this.currentRound)
-
-   this.currentRound.startTime = this.startTimer()
   }
 
   startTimer() {
@@ -34,12 +33,12 @@ class Game {
   }
 
   printMessage(deck) {
-      console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
+    console.log(`Welcome to FlashCards! You are playing with ${deck.countCards()} cards.
 -----------------------------------------------------------------------`)
   }
 
   printQuestion(round) {
-      util.main(round);
+    util.main(round);
   }
 }
 

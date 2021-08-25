@@ -1,5 +1,4 @@
 const Turn = require("./Turn");
-const Game = require("./Game");
 
 class Round {
   constructor(deck) {
@@ -18,7 +17,7 @@ class Round {
   takeTurn(guess) {
     let newTurn = new Turn(guess, this.currentCard)
 
-    if(newTurn.evaluateGuess() === false){
+    if (newTurn.evaluateGuess() === false) {
       this.incorrectGuesses.push(this.currentCard.id)
     }
 
@@ -41,9 +40,9 @@ class Round {
   }
 
   convertTime(time) {
-      var minutes = Math.floor(time / 60000);
-      var seconds = ((time % 60000) / 1000).toFixed(0);
-      console.log(`You've spent ${minutes} minutes and ${(seconds < 10 ? '0' : '')} ${seconds} seconds on this round`);
+    var minutes = Math.floor(time / 60000);
+    var seconds = ((time % 60000) / 1000).toFixed(0);
+    console.log(`You've spent ${minutes} minutes and ${(seconds < 10 ? '0' : '')} ${seconds} seconds on this round`);
   }
 
 
