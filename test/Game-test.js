@@ -34,17 +34,13 @@ describe('Game', () => {
 
   it.skip('should create cards out of data', () => {
     const game = new Game()
- 
     game.start();
-    console.log("why won'this print")
-
     expect(game.cards[0]).to.be.an.instanceof(Card);
   })
   
   it.skip('should create a deck with multiple cards', () => {
     const game = new Game()
     game.start()
-    console.log(game.cards)
     expect(game.deck).to.be.an.instanceof(Deck)
   })
 
