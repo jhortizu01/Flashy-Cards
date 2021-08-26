@@ -19,13 +19,14 @@ Mod2 Solo Project
 	This flashcard game presents a questions where the user inputs their guess and receives immediate feedback of their answer. At the end of the game it shows the time it took to answer all the questions in the game.
 
 ## Install + Setup
-	* Clone repo
+  * Clone repo
   * Run NPM Install
   * Run Node index.js
 
 ## Technologies
-	* Mocha 
-	* Chai 
+
+  * Mocha
+  * Chai 
   * Javascript
 
 ## Illustrations
@@ -36,10 +37,10 @@ Mod2 Solo Project
   * [Janika Hortizuela](https://github.com/jhortizu01/Flashy-Cards)
 
 ## Wins
-	* Successfully adding game timer
+  * Successfully adding game timer
 
 ## Challenges + Improvements
-	* Establishing the round and game class were initially difficult in the game.
+  * Establishthe round and game class were initially difficult in the game.
   * Future additions to the game could be adding a new data set to play a different deck of cards.
 
 
