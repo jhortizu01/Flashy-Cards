@@ -31,7 +31,7 @@ Mod2 Solo Project
 
 ## Illustrations
 
-![gif](https://user-images.githubusercontent.com/21073095/131036064-fb22c68c-98d3-493c-84cc-d723554ac307.gif)
+![gif](https://user-images.githubusercontent.com/21073095/131037349-41ec9e0c-d72d-457c-9dbd-87697dfc2470.gif)
 
 ## Contributors 
   * [Janika Hortizuela](https://github.com/jhortizu01/Flashy-Cards)
