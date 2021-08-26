@@ -16,12 +16,12 @@ Mod2 Solo Project
   - [Project Specs](#project-specs)
 
 ## Abstract
-	This flashcard game presents a questions where the user inputs their guess and receives immediate feedback of their answer. At the end of the game it shows the time it took to answer all the questions in the game.
+This flashcard game presents a questions where the user inputs their guess and receives immediate feedback of their answer. At the end of the game it shows the time it took to answer all the questions in the game.
 
 ## Install + Setup
   * Clone repo
-  * Run NPM Install
-  * Run Node index.js
+  * Run `NPM Install`
+  * Run `Node index.js`
 
 ## Technologies
 
